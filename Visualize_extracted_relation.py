@@ -9,10 +9,10 @@ def filter_dict(input_dict):
         output_dict[tmp_verb] = sorted_x[:5]
     return output_dict
 
-with open('verb_nsubj_amod_dict.json', 'w') as nsubj_f:
+with open('verb_nsubj_amod_dict.json', 'r') as nsubj_f:
     verb_nsubj_amod_dict = json.load(nsubj_f)
 
-with open('verb_dobj_amod_dict.json', 'w') as dobj_f:
+with open('verb_dobj_amod_dict.json', 'r') as dobj_f:
     verb_dobj_amod_dict = json.load(dobj_f)
 filtered_nsubj_dict = filter_dict(verb_nsubj_amod_dict)
 filtered_dobj_dict = filter_dict(verb_dobj_amod_dict)

@@ -5,6 +5,7 @@ import operator
 def filter_dict(input_dict):
     output_dict = dict()
     for tmp_verb in input_dict:
+
         sorted_x = sorted(input_dict[tmp_verb].items(), key=operator.itemgetter(1))
         output_dict[tmp_verb] = sorted_x[:5]
     return output_dict
@@ -14,8 +15,10 @@ with open('verb_nsubj_amod_dict.json', 'r') as nsubj_f:
 
 with open('verb_dobj_amod_dict.json', 'r') as dobj_f:
     verb_dobj_amod_dict = json.load(dobj_f)
-filtered_nsubj_dict = filter_dict(verb_nsubj_amod_dict)
-filtered_dobj_dict = filter_dict(verb_dobj_amod_dict)
+# filtered_nsubj_dict = filter_dict(verb_nsubj_amod_dict)
+# filtered_dobj_dict = filter_dict(verb_dobj_amod_dict)
+filtered_nsubj_dict = verb_nsubj_amod_dict
+filtered_dobj_dict = verb_dobj_amod_dict
 
 while True:
     command = input('Please give me your interested word, QUIT means quit this program')

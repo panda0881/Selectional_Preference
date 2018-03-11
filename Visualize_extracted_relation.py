@@ -21,7 +21,7 @@ filtered_nsubj_dict = verb_nsubj_amod_dict
 filtered_dobj_dict = verb_dobj_amod_dict
 
 while True:
-    command = input('Please give me your interested word, QUIT means quit this program')
+    command = input('Please give me your interested word(QUIT means quit this program):')
     if command == 'QUIT':
         break
     else:

@@ -1,6 +1,6 @@
 import json
 
-review_data_location = '/home/data/corpora/yelp_dataset_challenge_round11/dataset'
+review_data_location = '/home/data/corpora/yelp_dataset_challenge_round11/dataset/review.json'
 
 with open(review_data_location, 'r') as f:
     round11_data = json.load(f)

@@ -9,7 +9,7 @@ tmp_relation_list = list()
 f = open('/home/data/corpora/yelp_dataset_challenge_round11/dataset/review.json', 'r')
 counter = 0
 for line in f:
-    tmp_data = json.loads(f)
+    tmp_data = json.loads(line)
     text = tmp_data['text']
     counter += 1
     if counter % 1000 == 0:

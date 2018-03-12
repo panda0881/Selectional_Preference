@@ -1,11 +1,17 @@
 import json
 
 review_data_location = '/home/data/corpora/yelp_dataset_challenge_round11/dataset/review.json'
-
+sampled_round11_data = list()
 with open(review_data_location, 'r') as f:
-    round11_data = json.load(f)
+    counter = 0
+    for line in f:
+        tmp_data = json.loads(line)
+        sampled_round11_data.append(tmp_data)
+        counter += 1
+        if counter >= 100:
+            break
 
-sampled_round11_data = round11_data[:100]
+
 with open('sampled_yelp_round11.json', 'w') as f:
     json.dump(sampled_round11_data, f)
 

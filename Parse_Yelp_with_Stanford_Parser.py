@@ -2,7 +2,7 @@ from pycorenlp import StanfordCoreNLP
 import json
 nlp = StanfordCoreNLP('http://localhost:9000')
 
-path = '/home/data/corpora/wikipedia/enwiki-20131101'
+# path = '/home/data/corpora/wikipedia/enwiki-20131101'
 
 parsed_relations = list()
 tmp_relation_list = list()
@@ -18,7 +18,7 @@ for line in f:
     output = nlp.annotate(text, properties={'annotators': 'tokenize,depparse,lemma', 'outputFormat': 'json'})
     if counter % 1000000 == 0:
         print('We are storing parsing result for', counter, 'sentences')
-        file_name = 'parsed_wiki_data/' + str(counter) + '.json'
+        file_name = 'parsed_yelp_data_with_stanford/' + str(counter) + '.json'
         file = open(file_name, 'w')
         json.dump(parsed_relations, file)
         file.close()

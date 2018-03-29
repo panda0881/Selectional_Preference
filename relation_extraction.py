@@ -69,7 +69,8 @@ if os.path.isfile('verb_dobj_dict.json'):
         verb_dobj_dict = json.load(f)
 
 # for name in os.listdir('parsed_yelp_data_with_stanford'):
-file_name = 'parsed_yelp_data_with_stanford/1000000.json'
+number = input('which one do you wnat to calculate')
+file_name = 'parsed_yelp_data_with_stanford/' + str(number) + '000000.json'
 print('We are working on file:', file_name)
 with open(file_name, 'r') as original_f:
     sampled_data = json.load(original_f)

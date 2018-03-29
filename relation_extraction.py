@@ -3,7 +3,9 @@ import os
 
 
 def counting_pairs_from_parsed_data(parsed_data, verb_nsubj_amod_dict, verb_dobj_amod_dict, verb_nsubj_dict, verb_dobj_dict):
-    for sentence in parsed_data:
+    for i, sentence in enumerate(parsed_data):
+        if i % 10000 == 0:
+            print('We have counted:', i, '/', len(parsed_data))
         for pair in sentence:
             if pair[1] == 'nsubj':
                 tmp_verb = pair[0][1]
@@ -48,6 +50,7 @@ verb_dobj_dict = dict()
 
 for name in os.listdir('parsed_yelp_data_with_stanford'):
     file_name = 'parsed_yelp_data_with_stanford/' + name
+    print('We are working on file:', file_name)
     with open(file_name, 'r') as original_f:
         sampled_data = json.load(original_f)
         counting_pairs_from_parsed_data(sampled_data, verb_nsubj_amod_dict, verb_dobj_amod_dict, verb_nsubj_dict, verb_dobj_dict)

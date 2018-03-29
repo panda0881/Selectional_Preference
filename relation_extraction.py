@@ -8,7 +8,9 @@ def counting_pairs_from_yelp_parsed_data(parsed_data, verb_nsubj_amod_dict, verb
         if i % 1000 == 0:
             print('We have counted:', i, '/', len(parsed_data))
         for subsentence in sentence:
+            # print('subsentence:', subsentence)
             for pair in subsentence:
+                # print('pair:', pair)
                 if pair[1] == 'nsubj':
                     tmp_verb = pair[0][1]
                     tmp_subj = pair[2][1]
@@ -17,7 +19,7 @@ def counting_pairs_from_yelp_parsed_data(parsed_data, verb_nsubj_amod_dict, verb
                     if tmp_subj not in verb_nsubj_dict[tmp_verb]:
                         verb_nsubj_dict[tmp_verb][tmp_subj] = 0
                     verb_nsubj_dict[tmp_verb][tmp_subj] += 1
-                    for tmp_pair in sentence:
+                    for tmp_pair in subsentence:
                         if tmp_pair[1] == 'amod' and tmp_pair[0][0] == pair[2][0]:
                             tmp_adj = tmp_pair[2][1]
                             if tmp_verb not in verb_nsubj_amod_dict:
@@ -33,7 +35,7 @@ def counting_pairs_from_yelp_parsed_data(parsed_data, verb_nsubj_amod_dict, verb
                     if tmp_dobj not in verb_dobj_dict[tmp_verb]:
                         verb_dobj_dict[tmp_verb][tmp_dobj] = 0
                     verb_dobj_dict[tmp_verb][tmp_dobj] += 1
-                    for tmp_pair in sentence:
+                    for tmp_pair in subsentence:
                         if tmp_pair[1] == 'amod' and tmp_pair[0][0] == pair[2][0]:
                             tmp_adj = tmp_pair[2][1]
                             if tmp_verb not in verb_dobj_amod_dict:

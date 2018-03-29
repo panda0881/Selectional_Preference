@@ -52,12 +52,28 @@ verb_dobj_amod_dict = dict()
 verb_nsubj_dict = dict()
 verb_dobj_dict = dict()
 
-for name in os.listdir('parsed_yelp_data_with_stanford'):
-    file_name = 'parsed_yelp_data_with_stanford/' + name
-    print('We are working on file:', file_name)
-    with open(file_name, 'r') as original_f:
-        sampled_data = json.load(original_f)
-        counting_pairs_from_yelp_parsed_data(sampled_data, verb_nsubj_amod_dict, verb_dobj_amod_dict, verb_nsubj_dict,
+if os.path.isfile('verb_nsubj_amod_dict.json'):
+    with open('verb_nsubj_amod_dict.json', 'r') as f:
+        verb_nsubj_amod_dict = json.load(f)
+
+if os.path.isfile('verb_dobj_amod_dict.json'):
+    with open('verb_dobj_amod_dict.json', 'r') as f:
+        verb_dobj_amod_dict = json.load(f)
+
+if os.path.isfile('verb_nsubj_dict.json'):
+    with open('verb_nsubj_dict.json', 'r') as f:
+        verb_nsubj_dict = json.load(f)
+
+if os.path.isfile('verb_dobj_dict.json'):
+    with open('verb_dobj_dict.json', 'r') as f:
+        verb_dobj_dict = json.load(f)
+
+# for name in os.listdir('parsed_yelp_data_with_stanford'):
+file_name = 'parsed_yelp_data_with_stanford/1000000.json'
+print('We are working on file:', file_name)
+with open(file_name, 'r') as original_f:
+    sampled_data = json.load(original_f)
+counting_pairs_from_yelp_parsed_data(sampled_data, verb_nsubj_amod_dict, verb_dobj_amod_dict, verb_nsubj_dict,
                                         verb_dobj_dict)
 
 with open('verb_nsubj_amod_dict.json', 'w') as f:

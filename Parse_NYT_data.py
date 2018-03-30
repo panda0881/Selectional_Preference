@@ -3,7 +3,7 @@ import os
 import json
 
 sentences = list()
-root_folder = '~/NYT_annotated_corpus/data'
+root_folder = '/home/hzhangal/NYT_annotated_corpus/data'
 tree = ET.parse('test_NYT.xml')
 root = tree.getroot()
 

@@ -15,7 +15,9 @@ for file_name in os.listdir(folder):
     parsed_relations = list()
     with open(tmp_file_name, 'r') as f:
         tmp_sentences = json.load(f)
-        for text in tmp_sentences:
+        for i, text in enumerate(tmp_sentences):
+            if i % 1000 == 0:
+                print('We have analyzed:', i, '/', len(tmp_sentences))
             output = nlp.annotate(text, properties={'annotators': 'tokenize,depparse,lemma', 'outputFormat': 'json'})
             tmp_parsed_sentence = list()
             try:

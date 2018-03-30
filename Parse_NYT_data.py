@@ -4,16 +4,16 @@ import json
 
 sentences = list()
 root_folder = '/home/hzhangal/NYT_annotated_corpus/data'
-tree = ET.parse('test_NYT.xml')
-root = tree.getroot()
-for children in root:
-    if children.tag == 'body':
-        for body_children in children:
-            if body_children.tag == 'body.content':
-                for content_children in body_children:
-                    if content_children.attrib['class'] == 'full_text':
-                        for sentence in content_children:
-                            print(sentence.text)
+# tree = ET.parse('test_NYT.xml')
+# root = tree.getroot()
+# for children in root:
+#     if children.tag == 'body':
+#         for body_children in children:
+#             if body_children.tag == 'body.content':
+#                 for content_children in body_children:
+#                     if content_children.attrib['class'] == 'full_text':
+#                         for sentence in content_children:
+#                             print(sentence.text)
                     # print(content_children.attrib)
                     # print(content_children.tag)
             # print(body_children.tag)

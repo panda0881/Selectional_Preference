@@ -18,31 +18,17 @@
 <section>
 <fieldset><label>1. This is an example of a multiple choice question. Select only ONE of the following:</label>
 
-<div class="radio"><label><input name="Q1Answer" type="radio" value="Apple" />Apple</label></div>
+<div class="radio"><label><input name="Q1Answer" type="radio" value="5" />Perfectly match (5) </label></div>
 
-<div class="radio"><label><input name="Q1Answer" type="radio" value="Orange" />Orange</label></div>
+<div class="radio"><label><input name="Q1Answer" type="radio" value="4" />Somehow make sense (4) </label></div>
+
+<div class="radio"><label><input name="Q1Answer" type="radio" value="3" />Normal (3) </label></div>
+
+<div class="radio"><label><input name="Q1Answer" type="radio" value="2" />Seems weird (2) </label></div>
+
+<div class="radio"><label><input name="Q1Answer" type="radio" value="1" />It's impossible (1) </label></div>
 </fieldset>
 
-<fieldset><label>1. This is an example of a multiple choice question. Select only ONE of the following:</label>
-
-<div class="radio"><label><input name="Q1Answer" type="radio" value="Apple" />Apple</label></div>
-
-<div class="radio"><label><input name="Q1Answer" type="radio" value="Orange" />Orange</label></div>
-</fieldset>
-
-<fieldset><label>1. This is an example of a multiple choice question. Select only ONE of the following:</label>
-
-<div class="radio"><label><input name="Q1Answer" type="radio" value="Apple" />Apple</label></div>
-
-<div class="radio"><label><input name="Q1Answer" type="radio" value="Orange" />Orange</label></div>
-</fieldset>
-
-<fieldset><label>1. This is an example of a multiple choice question. Select only ONE of the following:</label>
-
-<div class="radio"><label><input name="Q1Answer" type="radio" value="Apple" />Apple</label></div>
-
-<div class="radio"><label><input name="Q1Answer" type="radio" value="Orange" />Orange</label></div>
-</fieldset>
 </section>
 <!-- End Content Body --></div>
 </section>

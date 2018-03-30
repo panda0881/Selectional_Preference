@@ -49,7 +49,7 @@ for file_name in os.listdir(folder):
         continue
     Waiting_files.append(tmp_file_name)
 print('Number of file ot be parsed:', len(Waiting_files))
-pool = ThreadPool(12)
+pool = ThreadPool(36)
 pool.map(parse_list_of_sentences, Waiting_files)
 pool.close()
 pool.join()

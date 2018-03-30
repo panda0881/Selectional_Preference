@@ -6,21 +6,11 @@ nlp = StanfordCoreNLP('http://localhost:9000')
 
 # path = '/home/data/corpora/wikipedia/enwiki-20131101'
 
-def parse_list_of_sentences(original_file_name, store_file_name):
 
-
-parsed_relations = list()
-tmp_relation_list = list()
-folder = 'prepared_NYT_data'
-# counter = 0
-for file_name in os.listdir(folder):
-    print('We are working on file:', file_name)
-    tmp_file_name = folder + '/' + file_name
+def parse_list_of_sentences(original_file_name):
     parsed_relations = list()
-    if os.path.isfile('parsed_NYT_data/' + file_name):
-        print('We have parsed this data')
-        continue
-    with open(tmp_file_name, 'r') as f:
+    store_file_name = 'Parsed_NYT_data/' + original_file_name.split('/')[1]
+    with open(original_file_name, 'r') as f:
         tmp_sentences = json.load(f)
         for i, text in enumerate(tmp_sentences):
             if i % 1000 == 0:
@@ -43,8 +33,25 @@ for file_name in os.listdir(folder):
             except:
                 parsed_relations.append(tmp_parsed_sentence)
                 continue
-    with open('parsed_NYT_data/' + file_name, 'w') as f:
+    with open(store_file_name, 'w') as f:
         json.dump(parsed_relations, f)
 
+parsed_relations = list()
+tmp_relation_list = list()
+folder = 'prepared_NYT_data'
+# counter = 0
+Waiting_files = list()
+for file_name in os.listdir(folder):
+    print('We are working on file:', file_name)
+    tmp_file_name = folder + '/' + file_name
+    if os.path.isfile('parsed_NYT_data/' + file_name):
+        print('We have parsed this data')
+        continue
+    Waiting_files.append(tmp_file_name)
+print('Number of file ot be parsed:', len(Waiting_files))
+pool = ThreadPool(12)
+pool.map(parse_list_of_sentences, Waiting_files)
+pool.close()
+pool.join()
 
 print('end')

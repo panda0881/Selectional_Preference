@@ -40,7 +40,7 @@ for year in os.listdir(root_folder):
                                 for content_children in body_children:
                                     if content_children.attrib['class'] == 'full_text':
                                         for sentence in content_children:
-                                            print(sentence.text)
+                                            tmp_sentences.append(sentence.text)
         with open('prepared_NYT_data/' + year + '_' + month + '.json', 'w') as f:
             json.dump(tmp_sentences, f)
 

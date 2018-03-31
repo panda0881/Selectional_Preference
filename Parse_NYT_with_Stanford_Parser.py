@@ -6,9 +6,6 @@ nlp = StanfordCoreNLP('http://localhost:9000')
 
 # path = '/home/data/corpora/wikipedia/enwiki-20131101'
 
-def parse_list_of_sentences(original_file_name, store_file_name):
-
-
 parsed_relations = list()
 tmp_relation_list = list()
 folder = 'prepared_NYT_data'

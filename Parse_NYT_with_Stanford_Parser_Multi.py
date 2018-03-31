@@ -9,7 +9,7 @@ nlp = StanfordCoreNLP('http://localhost:9000')
 
 def parse_list_of_sentences(original_file_name):
     parsed_relations = list()
-    store_file_name = 'Parsed_NYT_data/' + original_file_name.split('/')[1]
+    store_file_name = 'parsed_NYT_data/' + original_file_name.split('/')[1]
     with open(original_file_name, 'r') as f:
         tmp_sentences = json.load(f)
         for i, text in enumerate(tmp_sentences):

@@ -127,7 +127,7 @@ for f_name in os.listdir('/home/data/corpora/wikipedia/stanford_enhanced++_parse
     print('We are working on file:', tmp_file_name)
     with open(tmp_file_name, 'r') as original_f:
         sampled_data = json.load(original_f)
-    counting_pairs_from_yelp_parsed_data(sampled_data, verb_nsubj_amod_dict, verb_dobj_amod_dict, verb_nsubj_dict,
+    counting_pairs_from_wiki_parsed_data(sampled_data, verb_nsubj_amod_dict, verb_dobj_amod_dict, verb_nsubj_dict,
                                             verb_dobj_dict)
     counted_wiki_file.append(tmp_file_name)
 

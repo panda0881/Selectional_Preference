@@ -5,7 +5,7 @@ import os
 def counting_pairs_from_yelp_parsed_data(parsed_data, verb_nsubj_amod_dict, verb_dobj_amod_dict, verb_nsubj_dict,
                                     verb_dobj_dict):
     for i, sentence in enumerate(parsed_data):
-        if i % 1000 == 0:
+        if i % 10000 == 0:
             print('We have counted:', i, '/', len(parsed_data))
         for subsentence in sentence:
             # print('subsentence:', subsentence)
@@ -48,7 +48,7 @@ def counting_pairs_from_yelp_parsed_data(parsed_data, verb_nsubj_amod_dict, verb
 def counting_pairs_from_wiki_parsed_data(parsed_data, verb_nsubj_amod_dict, verb_dobj_amod_dict, verb_nsubj_dict,
                                     verb_dobj_dict):
     for i, sentence in enumerate(parsed_data):
-        if i % 1000 == 0:
+        if i % 10000 == 0:
             print('We have counted:', i, '/', len(parsed_data))
         for pair in sentence:
             # print('subsentence:', subsentence)
@@ -119,8 +119,8 @@ if os.path.isfile('counted_wiki_file.json'):
         counted_wiki_file = json.load(f)
 else:
     counted_wiki_file = list()
-for i in range(82):
-    tmp_file_name = '/home/data/corpora/wikipedia/stanford_enhanced++_parsed_data/' + str(i+1) + '000000.json'
+for f_name in os.listdir('/home/data/corpora/wikipedia/stanford_enhanced++_parsed_data/'):
+    tmp_file_name = '/home/data/corpora/wikipedia/stanford_enhanced++_parsed_data/' + f_name
     if tmp_file_name in counted_wiki_file:
         print('We have counted this file')
         continue

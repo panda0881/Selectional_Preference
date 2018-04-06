@@ -15,14 +15,25 @@ def filter_word(input_word):
     return tmp_output
 
 
-frequency_data = pandas.read_csv('verb_data/verb_frequency.csv')
+frequent_verbs_data = pandas.read_csv('verb_data/verb_frequency.csv')
 frequent_verbs = list()
-for index, row in frequency_data.iterrows():
+for index, row in frequent_verbs_data.iterrows():
     # test = row['Word']
     test = filter_word(row[1])
     frequent_verbs.append(test)
     # print('lalala')
 # print(frequency_data)
+
+frequent_words_data = pandas.read_csv('verb_data/word_frequency.csv')
+frequent_nouns = list()
+frequent_adjectives = list()
+for index, row in frequent_words_data.iterrows():
+    part_of_speech = row[2]
+    if part_of_speech == 'n':
+        frequent_nouns.append(filter_word(row[1]))
+    elif part_of_speech == 'j':
+        frequent_adjectives.append(filter_word(row[1]))
+
 
 
 # test = wn.all_synsets(pos='v')

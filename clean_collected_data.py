@@ -61,9 +61,9 @@ with open('verb_dobj_amod_dict.json', 'r') as f:
 cleaned_verb_dobj_amod_dict = dict()
 for verb in verb_dobj_amod_dict:
     tmp_dict = dict()
-    for noun in verb_dobj_amod_dict[verb]:
-        if noun in frequent_adjectives:
-            tmp_dict[noun] = verb_dobj_amod_dict[verb][noun]
+    for adj in verb_dobj_amod_dict[verb]:
+        if adj in frequent_adjectives:
+            tmp_dict[adj] = verb_dobj_amod_dict[verb][adj]
     cleaned_verb_dobj_amod_dict[verb] = tmp_dict
 
 with open('cleaned_verb_dobj_amod_dict.json', 'w') as f:
@@ -76,12 +76,27 @@ with open('verb_nsubj_amod_dict.json', 'r') as f:
 cleaned_verb_nsubj_amod_dict = dict()
 for verb in verb_nsubj_amod_dict:
     tmp_dict = dict()
-    for noun in verb_nsubj_amod_dict[verb]:
-        if noun in frequent_adjectives:
-            tmp_dict[noun] = verb_nsubj_amod_dict[verb][noun]
+    for adj in verb_nsubj_amod_dict[verb]:
+        if adj in frequent_adjectives:
+            tmp_dict[adj] = verb_nsubj_amod_dict[verb][adj]
     cleaned_verb_nsubj_amod_dict[verb] = tmp_dict
 
 with open('cleaned_verb_nsubj_amod_dict.json', 'w') as f:
     json.dump(cleaned_verb_nsubj_amod_dict, f)
+
+print('We are working on noun_amod')
+with open('verb_noun_amod_dict.json', 'r') as f:
+    noun_amod_dict = json.load(f)
+
+cleaned_noun_amod_dict = dict()
+for noun in noun_amod_dict:
+    tmp_dict = dict()
+    for adj in verb_nsubj_amod_dict[noun]:
+        if adj in frequent_adjectives:
+            tmp_dict[adj] = verb_nsubj_amod_dict[noun][adj]
+    cleaned_noun_amod_dict[noun] = tmp_dict
+
+with open('cleaned_noun_amod_dict.json', 'w') as f:
+    json.dump(cleaned_noun_amod_dict, f)
 
 

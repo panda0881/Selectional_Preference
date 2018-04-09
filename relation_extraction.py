@@ -1,5 +1,13 @@
 import json
 import os
+import pandas
+
+def filter_word(input_word):
+    tmp_output = ''
+    for c in input_word:
+        if c in 'zxcvbnmasdfghjklqwertyuiopZXCVBNMASDFGHJKLQWERTYUIOP':
+            tmp_output += c
+    return tmp_output
 
 
 def counting_pairs_from_yelp_parsed_data(parsed_data, verb_nsubj_amod_dict, verb_dobj_amod_dict, verb_nsubj_dict,
@@ -102,6 +110,15 @@ def counting_pairs_from_wiki_parsed_data(parsed_data, verb_nsubj_amod_dict, verb
                             verb_dobj_amod_dict[tmp_verb][tmp_adj] = 0
                         verb_dobj_amod_dict[tmp_verb][tmp_adj] += 1
 
+frequent_words_data = pandas.read_csv('verb_data/word_frequency.csv')
+frequent_nouns = list()
+frequent_adjectives = list()
+for index, row in frequent_words_data.iterrows():
+    part_of_speech = row[2]
+    if part_of_speech == 'n':
+        frequent_nouns.append(filter_word(row[1]))
+    elif part_of_speech == 'j':
+        frequent_adjectives.append(filter_word(row[1]))
 
 print('Start to count the yelp dataset')
 # tmp_file_name = '/home/data/corpora/wikipedia/stanford_enhanced++_parsed_data/1000000.json'
@@ -154,15 +171,58 @@ for f_name in os.listdir('/home/data/corpora/wikipedia/stanford_enhanced++_parse
     with open('counted_wiki_file.json', 'w') as f:
         json.dump(counted_wiki_file, f)
 
-    with open('verb_nsubj_amod_dict.json', 'w') as f:
-        json.dump(verb_nsubj_amod_dict, f)
+    cleaned_verb_dobj_dict = dict()
+    for verb in verb_dobj_dict:
+        tmp_dict = dict()
+        for noun in verb_dobj_dict[verb]:
+            if noun in frequent_nouns:
+                tmp_dict[noun] = verb_dobj_dict[verb][noun]
+        cleaned_verb_dobj_dict[verb] = tmp_dict
+    verb_dobj_dict = cleaned_verb_dobj_dict
+    with open('verb_dobj_dict.json', 'w') as f:
+        json.dump(verb_dobj_dict, f)
 
-    with open('verb_dobj_amod_dict.json', 'w') as f:
-        json.dump(verb_dobj_amod_dict, f)
-
+    cleaned_verb_nsubj_dict = dict()
+    for verb in verb_nsubj_dict:
+        tmp_dict = dict()
+        for noun in verb_nsubj_dict[verb]:
+            if noun in frequent_nouns:
+                tmp_dict[noun] = verb_nsubj_dict[verb][noun]
+        cleaned_verb_nsubj_dict[verb] = tmp_dict
+    verb_nsubj_dict = cleaned_verb_nsubj_dict
     with open('verb_nsubj_dict.json', 'w') as f:
         json.dump(verb_nsubj_dict, f)
 
+    cleaned_verb_dobj_amod_dict = dict()
+    for verb in verb_dobj_amod_dict:
+        tmp_dict = dict()
+        for adj in verb_dobj_amod_dict[verb]:
+            if adj in frequent_adjectives:
+                tmp_dict[adj] = verb_dobj_amod_dict[verb][adj]
+        cleaned_verb_dobj_amod_dict[verb] = tmp_dict
+    verb_dobj_amod_dict = cleaned_verb_dobj_amod_dict
+    with open('verb_dobj_amod_dict.json', 'w') as f:
+        json.dump(verb_dobj_amod_dict, f)
+
+    cleaned_verb_nsubj_amod_dict = dict()
+    for verb in verb_nsubj_amod_dict:
+        tmp_dict = dict()
+        for adj in verb_nsubj_amod_dict[verb]:
+            if adj in frequent_adjectives:
+                tmp_dict[adj] = verb_nsubj_amod_dict[verb][adj]
+        cleaned_verb_nsubj_amod_dict[verb] = tmp_dict
+    verb_nsubj_amod_dict = cleaned_verb_nsubj_amod_dict
+    with open('verb_nsubj_amod_dict.json', 'w') as f:
+        json.dump(verb_nsubj_amod_dict, f)
+
+    cleaned_noun_amod_dict = dict()
+    for noun in noun_amod_dict:
+        tmp_dict = dict()
+        for adj in verb_nsubj_amod_dict[noun]:
+            if adj in frequent_adjectives:
+                tmp_dict[adj] = verb_nsubj_amod_dict[noun][adj]
+        cleaned_noun_amod_dict[noun] = tmp_dict
+    noun_amod_dict = cleaned_noun_amod_dict
     with open('noun_amod_dict.json', 'w') as f:
         json.dump(noun_amod_dict, f)
 
@@ -186,15 +246,59 @@ for f_name in os.listdir('parsed_yelp_data_with_stanford'):
 
     with open('counted_yelp_file.json', 'w') as f:
         json.dump(counted_yelp_file, f)
-    with open('verb_nsubj_amod_dict.json', 'w') as f:
-        json.dump(verb_nsubj_amod_dict, f)
 
-    with open('verb_dobj_amod_dict.json', 'w') as f:
-        json.dump(verb_dobj_amod_dict, f)
+    cleaned_verb_dobj_dict = dict()
+    for verb in verb_dobj_dict:
+        tmp_dict = dict()
+        for noun in verb_dobj_dict[verb]:
+            if noun in frequent_nouns:
+                tmp_dict[noun] = verb_dobj_dict[verb][noun]
+        cleaned_verb_dobj_dict[verb] = tmp_dict
+    verb_dobj_dict = cleaned_verb_dobj_dict
+    with open('verb_dobj_dict.json', 'w') as f:
+        json.dump(verb_dobj_dict, f)
 
+    cleaned_verb_nsubj_dict = dict()
+    for verb in verb_nsubj_dict:
+        tmp_dict = dict()
+        for noun in verb_nsubj_dict[verb]:
+            if noun in frequent_nouns:
+                tmp_dict[noun] = verb_nsubj_dict[verb][noun]
+        cleaned_verb_nsubj_dict[verb] = tmp_dict
+    verb_nsubj_dict = cleaned_verb_nsubj_dict
     with open('verb_nsubj_dict.json', 'w') as f:
         json.dump(verb_nsubj_dict, f)
 
+    cleaned_verb_dobj_amod_dict = dict()
+    for verb in verb_dobj_amod_dict:
+        tmp_dict = dict()
+        for adj in verb_dobj_amod_dict[verb]:
+            if adj in frequent_adjectives:
+                tmp_dict[adj] = verb_dobj_amod_dict[verb][adj]
+        cleaned_verb_dobj_amod_dict[verb] = tmp_dict
+    verb_dobj_amod_dict = cleaned_verb_dobj_amod_dict
+    with open('verb_dobj_amod_dict.json', 'w') as f:
+        json.dump(verb_dobj_amod_dict, f)
+
+    cleaned_verb_nsubj_amod_dict = dict()
+    for verb in verb_nsubj_amod_dict:
+        tmp_dict = dict()
+        for adj in verb_nsubj_amod_dict[verb]:
+            if adj in frequent_adjectives:
+                tmp_dict[adj] = verb_nsubj_amod_dict[verb][adj]
+        cleaned_verb_nsubj_amod_dict[verb] = tmp_dict
+    verb_nsubj_amod_dict = cleaned_verb_nsubj_amod_dict
+    with open('verb_nsubj_amod_dict.json', 'w') as f:
+        json.dump(verb_nsubj_amod_dict, f)
+
+    cleaned_noun_amod_dict = dict()
+    for noun in noun_amod_dict:
+        tmp_dict = dict()
+        for adj in verb_nsubj_amod_dict[noun]:
+            if adj in frequent_adjectives:
+                tmp_dict[adj] = verb_nsubj_amod_dict[noun][adj]
+        cleaned_noun_amod_dict[noun] = tmp_dict
+    noun_amod_dict = cleaned_noun_amod_dict
     with open('noun_amod_dict.json', 'w') as f:
         json.dump(noun_amod_dict, f)
 

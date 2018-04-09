@@ -153,6 +153,39 @@ for f_name in os.listdir('/home/data/corpora/wikipedia/stanford_enhanced++_parse
 
     with open('counted_wiki_file.json', 'w') as f:
         json.dump(counted_wiki_file, f)
+
+    with open('verb_nsubj_amod_dict.json', 'w') as f:
+        json.dump(verb_nsubj_amod_dict, f)
+
+    with open('verb_dobj_amod_dict.json', 'w') as f:
+        json.dump(verb_dobj_amod_dict, f)
+
+    with open('verb_nsubj_dict.json', 'w') as f:
+        json.dump(verb_nsubj_dict, f)
+
+    with open('noun_amod_dict.json', 'w') as f:
+        json.dump(noun_amod_dict, f)
+
+
+if os.path.isfile('counted_yelp_file.json'):
+    with open('counted_yelp_file.json', 'r') as f:
+        counted_yelp_file = json.load(f)
+else:
+    counted_yelp_file = list()
+for f_name in os.listdir('parsed_yelp_data_with_stanford'):
+    tmp_file_name = 'parsed_yelp_data_with_stanford/' + f_name
+    if tmp_file_name in counted_yelp_file:
+        print('We have counted this file')
+        continue
+    print('We are working on file:', tmp_file_name)
+    with open(tmp_file_name, 'r') as original_f:
+        sampled_data = json.load(original_f)
+    counting_pairs_from_yelp_parsed_data(sampled_data, verb_nsubj_amod_dict, verb_dobj_amod_dict, verb_nsubj_dict,
+                                            verb_dobj_dict, noun_amod_dict)
+    counted_wiki_file.append(tmp_file_name)
+
+    with open('counted_yelp_file.json', 'w') as f:
+        json.dump(counted_yelp_file, f)
     with open('verb_nsubj_amod_dict.json', 'w') as f:
         json.dump(verb_nsubj_amod_dict, f)
 

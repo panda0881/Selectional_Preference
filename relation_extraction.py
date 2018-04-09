@@ -162,7 +162,7 @@ for f_name in os.listdir('/home/data/corpora/wikipedia/stanford_enhanced++_parse
     with open('verb_nsubj_dict.json', 'w') as f:
         json.dump(verb_nsubj_dict, f)
 
-    with open('verb_dobj_dict.json', 'w') as f:
-        json.dump(verb_dobj_dict, f)
+    with open('noun_amod_dict.json', 'w') as f:
+        json.dump(noun_amod_dict, f)
 
 print('end')

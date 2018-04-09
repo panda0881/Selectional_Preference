@@ -128,12 +128,7 @@ verb_nsubj_dict = dict()
 verb_dobj_dict = dict()
 noun_amod_dict = dict()
 
-if os.path.isfile('verb_nsubj_amod_dict.json'):def filter_word(input_word):
-    tmp_output = ''
-    for c in input_word:
-        if c in 'zxcvbnmasdfghjklqwertyuiopZXCVBNMASDFGHJKLQWERTYUIOP':
-            tmp_output += c
-    return tmp_output
+if os.path.isfile('verb_nsubj_amod_dict.json'):
     with open('verb_nsubj_amod_dict.json', 'r') as f:
         verb_nsubj_amod_dict = json.load(f)
 

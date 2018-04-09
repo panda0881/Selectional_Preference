@@ -128,7 +128,12 @@ verb_nsubj_dict = dict()
 verb_dobj_dict = dict()
 noun_amod_dict = dict()
 
-if os.path.isfile('verb_nsubj_amod_dict.json'):
+if os.path.isfile('verb_nsubj_amod_dict.json'):def filter_word(input_word):
+    tmp_output = ''
+    for c in input_word:
+        if c in 'zxcvbnmasdfghjklqwertyuiopZXCVBNMASDFGHJKLQWERTYUIOP':
+            tmp_output += c
+    return tmp_output
     with open('verb_nsubj_amod_dict.json', 'r') as f:
         verb_nsubj_amod_dict = json.load(f)
 
@@ -218,9 +223,9 @@ for f_name in os.listdir('/home/data/corpora/wikipedia/stanford_enhanced++_parse
     cleaned_noun_amod_dict = dict()
     for noun in noun_amod_dict:
         tmp_dict = dict()
-        for adj in verb_nsubj_amod_dict[noun]:
+        for adj in noun_amod_dict[noun]:
             if adj in frequent_adjectives:
-                tmp_dict[adj] = verb_nsubj_amod_dict[noun][adj]
+                tmp_dict[adj] = noun_amod_dict[noun][adj]
         cleaned_noun_amod_dict[noun] = tmp_dict
     noun_amod_dict = cleaned_noun_amod_dict
     with open('noun_amod_dict.json', 'w') as f:
@@ -294,9 +299,9 @@ for f_name in os.listdir('parsed_yelp_data_with_stanford'):
     cleaned_noun_amod_dict = dict()
     for noun in noun_amod_dict:
         tmp_dict = dict()
-        for adj in verb_nsubj_amod_dict[noun]:
+        for adj in noun_amod_dict[noun]:
             if adj in frequent_adjectives:
-                tmp_dict[adj] = verb_nsubj_amod_dict[noun][adj]
+                tmp_dict[adj] = noun_amod_dict[noun][adj]
         cleaned_noun_amod_dict[noun] = tmp_dict
     noun_amod_dict = cleaned_noun_amod_dict
     with open('noun_amod_dict.json', 'w') as f:

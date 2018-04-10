@@ -238,6 +238,7 @@ for f_name in os.listdir('parsed_yelp_data_with_stanford'):
         print('We have counted this file')
         continue
     print('We are working on file:', tmp_file_name)
+    sampled_data = list()
     with open(tmp_file_name, 'r') as original_f:
         sampled_data = json.load(original_f)
     counting_pairs_from_yelp_parsed_data(sampled_data, verb_nsubj_amod_dict, verb_dobj_amod_dict, verb_nsubj_dict,

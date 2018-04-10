@@ -243,7 +243,7 @@ for f_name in os.listdir('parsed_yelp_data_with_stanford'):
         sampled_data = json.load(original_f)
     counting_pairs_from_yelp_parsed_data(sampled_data, verb_nsubj_amod_dict, verb_dobj_amod_dict, verb_nsubj_dict,
                                             verb_dobj_dict, noun_amod_dict)
-    counted_wiki_file.append(tmp_file_name)
+    counted_yelp_file.append(tmp_file_name)
 
     with open('counted_yelp_file.json', 'w') as f:
         json.dump(counted_yelp_file, f)

@@ -131,7 +131,7 @@ def generate_object_questionnaire(verb_dict, verb_label_dict, selected_verbs, ou
     <li>In some examples, a verb does not have certain preference with objects. For example, <font color="red"><b>'love'</b></font> and <font color="red"><b>'country'</b></font>. In this case, we can love anything, so you should label this example with <b>3</b>.</li>
     <li>In some examples, a verb is paired with a word that should not be its object. For example, <font color="red"><b>'eat'</b></font> and <font color="red"><b>'house'</b></font>. In this case, you should label this example with <b>1</b>.</li>
     <li>Anything between the above three situations, you can label them based on your feeling or commonsense. But if you don't know the meaning of these two words, please simply choose <b>'I'm not sure'</b>.</li>
-    <li>You will be asked to label 103 questions about 25 verbs. 3 very simple questions are randomly mixed into the dataset to make sure the quality of annotation.</li>
+    <li>You will be asked to label 103 questions. 3 very simple questions are randomly mixed into the dataset to make sure the quality of the annotation.</li>
     <li>PS: To finish this job, you must effectively label more than <b>80%</b> of the questions, which simply means that you can't choose <b>'I'm not sure'</b> for all the questions.</li>
 </ul>
 </div>
@@ -163,12 +163,12 @@ def generate_object_questionnaire(verb_dict, verb_label_dict, selected_verbs, ou
             f.write('\n')
             f.write(tmp_question_html)
         else:
-            tmp_objects = verb_dict[verb]['dobj'] + []
+            tmp_objects = verb_dict[verb] + []
             random.shuffle(tmp_objects)
             for tmp_object in tmp_objects:
                 tmp_question_number += 1
                 verb_pos = verb_label_dict[verb]
-                name = 'dobj_v' + str(verb_pos) + '_' + str(verb_dict[verb]['dobj'].index(tmp_object) + 1)
+                name = 'dobj_v' + str(verb_pos) + '_' + str(verb_dict[verb].index(tmp_object) + 1)
                 tmp_question_html = generate_object_question(verb, tmp_object, name, tmp_question_number)
                 f.write('\n')
                 f.write(tmp_question_html)
@@ -207,7 +207,7 @@ def generate_subject_questionnaire(verb_dict, verb_label_dict, selected_verbs, o
     <li>In some examples, a verb does not have certain preference with objects. For example, <font color="red"><b>'people'</b></font> and <font color="red"><b>'live'</b></font>. In this case, Everything can live, so you should label this example with <b>3</b>.</li>
     <li>In some examples, a verb is paired with a word that should not be its object. For example, <font color="red"><b>'house'</b></font> and <font color="red"><b>'eat'</b></font>. In this case, you should label this example with <b>1</b>.</li>
     <li>Anything between the above three situations, you can label them based on your feeling or commonsense. But if you don't know the meaning of these two words, please simply choose <b>'I'm not sure'</b>.</li>
-    <li>You will be asked to label 103 questions about 25 verbs. 3 very simple questions are randomly mixed into the dataset to make sure the quality of annotation.</li>
+    <li>You will be asked to label 103 questions. 3 very simple questions are randomly mixed into the dataset to make sure the quality of the annotation.</li>
     <li>PS: To finish this job, you must effectively label more than <b>80%</b> of the questions, which simply means that you can't choose <b>'I'm not sure'</b> for all the questions.</li>
 </ul>
 </div>
@@ -239,12 +239,12 @@ def generate_subject_questionnaire(verb_dict, verb_label_dict, selected_verbs, o
             f.write('\n')
             f.write(tmp_question_html)
         else:
-            tmp_nsubjs = verb_dict[verb]['nsubj'] + []
+            tmp_nsubjs = verb_dict[verb] + []
             random.shuffle(tmp_nsubjs)
             for tmp_nsubj in tmp_nsubjs:
                 tmp_question_number += 1
                 verb_pos = verb_label_dict[verb]
-                name = 'subj_v' + str(verb_pos) + '_' + str(verb_dict[verb]['nsubj'].index(tmp_nsubj) + 1)
+                name = 'subj_v' + str(verb_pos) + '_' + str(verb_dict[verb].index(tmp_nsubj) + 1)
                 tmp_question_html = generate_subject_question(verb, tmp_nsubj, name, tmp_question_number)
                 f.write('\n')
                 f.write(tmp_question_html)
@@ -283,7 +283,7 @@ def generate_object_amod_questionnaire(verb_dict, verb_label_dict, selected_verb
     <li>In some examples, we can use any adjectives to describe the object of a verb. For example, <font color="red"><b>'buy'</b></font> and <font color="red"><b>'fancy'</b></font> car. In this case, we can use any adjectives to describe the staff we bought, so you should label this example with <b>3</b>.</li>
     <li>In some examples, a adjective is not supposed to be used to describe the object of a verb. For example, <font color="red"><b>'read'</b></font> and <font color="red"><b>'tasty'</b></font> book. In this case, you should label this example with <b>1</b>.</li>
     <li>Anything between the above three situations, you can label them based on your feeling or commonsense. But if you don't know the meaning of these two words, please simply choose <b>'I'm not sure'</b>.</li>
-    <li>You will be asked to label 103 questions about 25 verbs. 3 very simple questions are randomly mixed into the dataset to make sure the quality of annotation.</li>
+    <li>You will be asked to label 103 questions. 3 very simple questions are randomly mixed into the dataset to make sure the quality of the annotation.</li>
     <li>PS: To finish this job, you must effectively label more than <b>80%</b> of the questions, which simply means that you can't choose <b>'I'm not sure'</b> for all the questions.</li>
 </ul>
 </div>
@@ -315,12 +315,12 @@ def generate_object_amod_questionnaire(verb_dict, verb_label_dict, selected_verb
             f.write('\n')
             f.write(tmp_question_html)
         else:
-            tmp_object_amods = verb_dict[verb]['dobj_amod'] + []
+            tmp_object_amods = verb_dict[verb] + []
             random.shuffle(tmp_object_amods)
             for tmp_object_amod in tmp_object_amods:
                 tmp_question_number += 1
                 verb_pos = verb_label_dict[verb]
-                name = 'dobj_amod_v' + str(verb_pos) + '_' + str(verb_dict[verb]['dobj_amod'].index(tmp_object_amod) + 1)
+                name = 'dobj_amod_v' + str(verb_pos) + '_' + str(verb_dict[verb].index(tmp_object_amod) + 1)
                 tmp_question_html = generate_object_amod_question(verb, tmp_object_amod, name, tmp_question_number)
                 f.write('\n')
                 f.write(tmp_question_html)
@@ -359,7 +359,7 @@ def generate_subj_amod_questionnaire(verb_dict, verb_label_dict, selected_verbs,
     <li>In some examples, we can use any adjectives to describe the subject of a verb. For example, <font color="red"><b>'handsome'</b></font> boy and <font color="red"><b>'study'</b></font> car. In this case, we can use any adjectives to describe the person who study, so you should label this example with <b>3</b>.</li>
     <li>In some examples, an adjective is not supposed to be used to describe the subject of a verb. For example, <font color="red"><b>'tasty'</b></font> boy and <font color="red"><b>'study'</b></font>. In this case, you should label this example with <b>1</b>.</li>
     <li>Anything between the above three situations, you can label them based on your feeling or commonsense. But if you don't know the meaning of these two words, please simply choose <b>'I'm not sure'</b>.</li>
-    <li>You will be asked to label 403 questions about 100 verbs. 3 very simple questions are randomly mixed into the dataset to make sure the quality of annotation.</li>
+    <li>You will be asked to label 103 questions. 3 very simple questions are randomly mixed into the dataset to make sure the quality of the annotation.</li>
     <li>PS: To finish this job, you must effectively label more than <b>80%</b> of the questions, which simply means that you can't choose <b>'I'm not sure'</b> for all the questions.</li>
 </ul>
 </div>
@@ -391,13 +391,13 @@ def generate_subj_amod_questionnaire(verb_dict, verb_label_dict, selected_verbs,
             f.write('\n')
             f.write(tmp_question_html)
         else:
-            tmp_nsubject_amods = verb_dict[verb]['nsubj_amod'] + []
+            tmp_nsubject_amods = verb_dict[verb] + []
             random.shuffle(tmp_nsubject_amods)
             for tmp_nsubject_amod in tmp_nsubject_amods:
                 tmp_question_number += 1
                 verb_pos = verb_label_dict[verb]
-                name = 'dobj_amod_v' + str(verb_pos) + '_' + str(verb_dict[verb]['nsubj_amod'].index(tmp_nsubject_amod) + 1)
-                tmp_question_html = generate_object_amod_question(verb, tmp_nsubject_amod, name, tmp_question_number)
+                name = 'nsubj_amod_v' + str(verb_pos) + '_' + str(verb_dict[verb].index(tmp_nsubject_amod) + 1)
+                tmp_question_html = generate_subject_amod_question(verb, tmp_nsubject_amod, name, tmp_question_number)
                 f.write('\n')
                 f.write(tmp_question_html)
     f.write("""</section>
@@ -435,7 +435,7 @@ def generate_amod_questionnaire(noun_dict, noun_label_dict, selected_nouns, outp
     <li>In some examples, an adjective can be used to describe any nouns. For example, <font color="red"><b>'large'</b></font> and <font color="red"><b>'house'</b></font>. In this case, we can use large to describe almost everything, so you should label this example with <b>3</b>.</li>
     <li>In some examples, an adjective is not supposed to be used to describe a noun. For example, <font color="red"><b>'tasty'</b></font> and <font color="red"><b>'rock'</b></font>. In this case, you should label this example with <b>1</b>.</li>
     <li>Anything between the above three situations, you can label them based on your feeling or commonsense. But if you don't know the meaning of these two words, please simply choose <b>'I'm not sure'</b>.</li>
-    <li>You will be asked to label 103 questions about 25 verbs. 3 very simple questions are randomly mixed into the dataset to make sure the quality of annotation.</li>
+    <li>You will be asked to label 103 questions. 3 very simple questions are randomly mixed into the dataset to make sure the quality of the annotation.</li>
     <li>PS: To finish this job, you must effectively label more than <b>80%</b> of the questions, which simply means that you can't choose <b>'I'm not sure'</b> for all the questions.</li>
 </ul>
 </div>
@@ -457,23 +457,23 @@ def generate_amod_questionnaire(noun_dict, noun_label_dict, selected_nouns, outp
         elif noun == '1':
             tmp_question_number += 1
             name = 'amod_check_1'
-            tmp_question_html = generate_subject_question(simple_checking_pairs['amod'][1][0], simple_checking_pairs['amod'][1][1], name, tmp_question_number)
+            tmp_question_html = generate_amod_question(simple_checking_pairs['amod'][1][0], simple_checking_pairs['amod'][1][1], name, tmp_question_number)
             f.write('\n')
             f.write(tmp_question_html)
         elif noun == '2':
             tmp_question_number += 1
             name = 'amod_check_2'
-            tmp_question_html = generate_subject_question(simple_checking_pairs['amod'][2][0], simple_checking_pairs['amod'][2][1], name, tmp_question_number)
+            tmp_question_html = generate_amod_question(simple_checking_pairs['amod'][2][0], simple_checking_pairs['amod'][2][1], name, tmp_question_number)
             f.write('\n')
             f.write(tmp_question_html)
         else:
-            tmp_adjs = noun_dict[noun]['amod'] + []
+            tmp_adjs = noun_dict[noun] + []
             random.shuffle(tmp_adjs)
             for tmp_adj in tmp_adjs:
                 tmp_question_number += 1
                 verb_pos = noun_label_dict[noun]
-                name = 'amod_n' + str(verb_pos) + '_' + str(noun_dict[noun]['amod'].index(tmp_adj) + 1)
-                tmp_question_html = generate_subject_question(noun, tmp_adj, name, tmp_question_number)
+                name = 'amod_n' + str(verb_pos) + '_' + str(noun_dict[noun].index(tmp_adj) + 1)
+                tmp_question_html = generate_amod_question(noun, tmp_adj, name, tmp_question_number)
                 f.write('\n')
                 f.write(tmp_question_html)
     f.write("""</section>
@@ -504,11 +504,11 @@ simple_checking_pairs['amod'] = [('food', 'tasty'), ('house', 'large'), ('rock',
 #     relation_dict[verb]['nsubj'] = ['noun1', 'noun2', 'noun3', 'noun4', 'noun5']
 #     relation_dict[verb]['nsubj_amod'] = ['adj1', 'adj2', 'adj3', 'adj4', 'adj5']
 
-with open('../test_100.json', 'r') as f:
-    relation_dict = json.load(f)
-
-with open('../verb_dict.json', 'r') as f:
-    verb_pos_dict = json.load(f)
+# with open('../test_100.json', 'r') as f:
+#     relation_dict = json.load(f)
+#
+# with open('../verb_dict.json', 'r') as f:
+#     verb_pos_dict = json.load(f)
 
 
 # tmp_pairs = list()
@@ -521,13 +521,30 @@ with open('../verb_dict.json', 'r') as f:
 # for i, verb in enumerate(sample_verbs):
 #     verb_pos_dict[verb] = str(i + 1)
 
-sample_verbs = list()
-for tmp_verb in relation_dict:
-    sample_verbs.append(tmp_verb)
+# sample_verbs = list()
+# for tmp_verb in relation_dict:
+#     sample_verbs.append(tmp_verb)
 
-generate_object_questionnaire(relation_dict, verb_pos_dict, sample_verbs, 'test_object.html')
-generate_subject_questionnaire(relation_dict, verb_pos_dict, sample_verbs, 'test_subject.html')
-generate_object_amod_questionnaire(relation_dict, verb_pos_dict, sample_verbs, 'test_object_amod.html')
-generate_subj_amod_questionnaire(relation_dict, verb_pos_dict, sample_verbs, 'test_subject_amod.html')
+# generate_object_questionnaire(relation_dict, verb_pos_dict, sample_verbs, 'test_object.html')
+# generate_subject_questionnaire(relation_dict, verb_pos_dict, sample_verbs, 'test_subject.html')
+# generate_object_amod_questionnaire(relation_dict, verb_pos_dict, sample_verbs, 'test_object_amod.html')
+# generate_subj_amod_questionnaire(relation_dict, verb_pos_dict, sample_verbs, 'test_subject_amod.html')
+
+nsubj_amod_dict = dict()
+all_verbs = list()
+verb_pos_dict = dict()
+with open('../nsubj_amod_pairs.txt', 'r') as f:
+    counter = 0
+    for line in f:
+        counter += 1
+        words = line[:-1].split('\t')
+        nsubj_amod_dict[words[0]] = [words[1], words[2], words[3], words[4]]
+        all_verbs.append(words[0])
+        verb_pos_dict[words[0]] = counter
+
+for i in range(20):
+    selected_verbs = all_verbs[i*25: (i+1)*25]
+    file_name = 'nsubj_amod/nsubj_amod_' + str(i+1) + '.html'
+    generate_subj_amod_questionnaire(nsubj_amod_dict, verb_pos_dict, selected_verbs, file_name)
 
 print('end')

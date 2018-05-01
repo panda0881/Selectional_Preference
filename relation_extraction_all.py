@@ -76,7 +76,7 @@ def counting_pairs_from_wiki_parsed_data(parsed_data,  verb_nsubj_dict, verb_dob
                     verb_dobj_dict[tmp_verb][tmp_dobj] = 0
                 verb_dobj_dict[tmp_verb][tmp_dobj] += 1
 
-print('Start to count the yelp dataset')
+
 # tmp_file_name = '/home/data/corpora/wikipedia/stanford_enhanced++_parsed_data/1000000.json'
 verb_nsubj_dict = dict()
 verb_dobj_dict = dict()
@@ -97,6 +97,7 @@ if os.path.isfile('noun_amod_dict_all.json'):
 # for name in os.listdir('parsed_yelp_data_with_stanford'):
 # number = input('which one do you want to calculate')
 # file_name = 'parsed_yelp_data_with_stanford/' + str(number) + '000000.json'
+print('Start to count the wiki dataset')
 wiki_folder_location = '/home/data/corpora/wikipedia/stanford_enhanced++_parsed_data/'
 if os.path.isfile('counted_wiki_file_all.json'):
     with open('counted_wiki_file_all.json', 'r') as f:
@@ -125,7 +126,7 @@ for f_name in os.listdir(wiki_folder_location):
 
     with open('counted_wiki_file_all.json', 'w') as f:
         json.dump(counted_wiki_file, f)
-
+print('Start to count the nyt dataset')
 nyt_folder_location = '/home/data/corpora/nytimes/parsed_NYT_data/'
 if os.path.isfile('counted_nyt_file_all.json'):
     with open('counted_nyt_file_all.json', 'r') as f:
@@ -159,7 +160,7 @@ for f_name in os.listdir(nyt_folder_location):
 
     with open('counted_yelp_file_all.json', 'w') as f:
         json.dump(counted_nyt_file, f)
-
+print('Start to count the yelp dataset')
 yelp_folder_location = '/home/data/corpora/YELP/parsed_yelp_data_with_stanford/'
 if os.path.isfile('counted_yelp_file_all.json'):
     with open('counted_yelp_file_all.json', 'r') as f:

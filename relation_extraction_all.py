@@ -83,15 +83,15 @@ verb_dobj_dict = dict()
 noun_amod_dict = dict()
 
 if os.path.isfile('verb_nsubj_dict_all.json'):
-    with open('verb_nsubj_dict.json_all', 'r') as f:
+    with open('verb_nsubj_dict_all.json', 'r') as f:
         verb_nsubj_dict = json.load(f)
 
 if os.path.isfile('verb_dobj_dict_all.json'):
-    with open('verb_dobj_dict.json_all', 'r') as f:
+    with open('verb_dobj_dict_all.json', 'r') as f:
         verb_dobj_dict = json.load(f)
 
 if os.path.isfile('noun_amod_dict_all.json'):
-    with open('noun_amod_dict.json_all', 'r') as f:
+    with open('noun_amod_dict_all.json', 'r') as f:
         noun_amod_dict = json.load(f)
 
 # for name in os.listdir('parsed_yelp_data_with_stanford'):

@@ -2,13 +2,13 @@ import json
 import os
 
 
-with open('verb_nsubj_dict.json_all', 'r') as f:
+with open('verb_nsubj_dict_all.json', 'r') as f:
     verb_nsubj_dict = json.load(f)
 
-with open('verb_dobj_dict.json_all', 'r') as f:
+with open('verb_dobj_dict_all.json', 'r') as f:
     verb_dobj_dict = json.load(f)
 
-with open('noun_amod_dict.json_all', 'r') as f:
+with open('noun_amod_dict_all.json', 'r') as f:
     noun_amod_dict = json.load(f)
 
 

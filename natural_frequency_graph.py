@@ -24,7 +24,10 @@ with open('amod_anotation.txt', 'r') as f:
         total_number = 0
         for adj in noun_amod_dict[words[0]]:
             total_number += noun_amod_dict[words[0]][adj]
-        natural_frequency.append(noun_amod_dict[words[0]][words[1]]/total_number)
+        if words[1] not in noun_amod_dict[words[0]]:
+            natural_frequency.append(0)
+        else:
+            natural_frequency.append(noun_amod_dict[words[0]][words[1]]/total_number)
 
 amod_result = dict()
 amod_result['annotation'] = Plausibility_score
@@ -41,8 +44,11 @@ with open('nsubj_anotation.txt', 'r') as f:
         Plausibility_score.append(float(words[2]))
         total_number = 0
         for noun in verb_nsubj_dict[words[0]]:
-            total_number += noun_amod_dict[words[0]][noun]
-        natural_frequency.append(noun_amod_dict[words[0]][words[1]]/total_number)
+            total_number += verb_nsubj_dict[words[0]][noun]
+        if words[1] not in verb_nsubj_dict[words[0]]:
+            natural_frequency.append(0)
+        else:
+            natural_frequency.append(verb_nsubj_dict[words[0]][words[1]]/total_number)
 
 nsubj_result = dict()
 nsubj_result['annotation'] = Plausibility_score
@@ -59,8 +65,11 @@ with open('dobj_anotation.txt', 'r') as f:
         Plausibility_score.append(float(words[2]))
         total_number = 0
         for noun in verb_dobj_dict[words[0]]:
-            total_number += noun_amod_dict[words[0]][noun]
-        natural_frequency.append(noun_amod_dict[words[0]][words[1]]/total_number)
+            total_number += verb_dobj_dict[words[0]][noun]
+        if words[1] not in verb_dobj_dict[words[0]]:
+            natural_frequency.append(0)
+        else:
+            natural_frequency.append(verb_dobj_dict[words[0]][words[1]]/total_number)
 
 dobj_result = dict()
 dobj_result['annotation'] = Plausibility_score

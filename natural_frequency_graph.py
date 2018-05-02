@@ -20,7 +20,7 @@ with open('amod_anotation.txt', 'r') as f:
     for line in f:
         words = line[:-1].split('\t')
         SP_pairs.append((words[0], words[1]))
-        Plausibility_score.append(float(words[3]))
+        Plausibility_score.append(float(words[2]))
         total_number = 0
         for adj in noun_amod_dict[words[0]]:
             total_number += noun_amod_dict[words[0]][adj]
@@ -38,7 +38,7 @@ with open('nsubj_anotation.txt', 'r') as f:
     for line in f:
         words = line[:-1].split('\t')
         SP_pairs.append((words[0], words[1]))
-        Plausibility_score.append(float(words[3]))
+        Plausibility_score.append(float(words[2]))
         total_number = 0
         for noun in verb_nsubj_dict[words[0]]:
             total_number += noun_amod_dict[words[0]][noun]
@@ -56,7 +56,7 @@ with open('dobj_anotation.txt', 'r') as f:
     for line in f:
         words = line[:-1].split('\t')
         SP_pairs.append((words[0], words[1]))
-        Plausibility_score.append(float(words[3]))
+        Plausibility_score.append(float(words[2]))
         total_number = 0
         for noun in verb_dobj_dict[words[0]]:
             total_number += noun_amod_dict[words[0]][noun]

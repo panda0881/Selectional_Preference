@@ -54,7 +54,7 @@ nsubj_result = dict()
 nsubj_result['annotation'] = Plausibility_score
 nsubj_result['frequency'] = natural_frequency
 
-print('We are working on amod')
+print('We are working on dobj')
 SP_pairs = list()
 Plausibility_score = list()
 natural_frequency = list()

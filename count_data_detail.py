@@ -46,12 +46,12 @@ print('Number of amod:', amod_number)
 for verb in verb_dobj_amod_dict:
     for adj in verb_dobj_amod_dict[verb]:
         dobj_amod_number += verb_dobj_amod_dict[verb][adj]
-print('Number of dobj_amod:', verb_dobj_amod_dict)
+print('Number of dobj_amod:', dobj_amod_number)
 
 for verb in verb_nsubj_amod_dict:
     for adj in verb_nsubj_amod_dict[verb]:
         nsubj_amod_number += verb_nsubj_amod_dict[verb][adj]
-print('Number of nsubj_amod:', verb_nsubj_amod_dict)
+print('Number of nsubj_amod:', nsubj_amod_number)
 
 print('We are working on detailed information about yelp')
 if os.path.isfile('verb_nsubj_amod_dict_yelp.json'):
@@ -98,12 +98,12 @@ print('Number of amod:', amod_number)
 for verb in verb_dobj_amod_dict:
     for adj in verb_dobj_amod_dict[verb]:
         dobj_amod_number += verb_dobj_amod_dict[verb][adj]
-print('Number of dobj_amod:', verb_dobj_amod_dict)
+print('Number of dobj_amod:', dobj_amod_number)
 
 for verb in verb_nsubj_amod_dict:
     for adj in verb_nsubj_amod_dict[verb]:
         nsubj_amod_number += verb_nsubj_amod_dict[verb][adj]
-print('Number of nsubj_amod:', verb_nsubj_amod_dict)
+print('Number of nsubj_amod:', nsubj_amod_number)
 
 print('We are working on detailed information about NYT')
 if os.path.isfile('verb_nsubj_amod_dict_nyt.json'):
@@ -150,9 +150,9 @@ print('Number of amod:', amod_number)
 for verb in verb_dobj_amod_dict:
     for adj in verb_dobj_amod_dict[verb]:
         dobj_amod_number += verb_dobj_amod_dict[verb][adj]
-print('Number of dobj_amod:', verb_dobj_amod_dict)
+print('Number of dobj_amod:', dobj_amod_number)
 
 for verb in verb_nsubj_amod_dict:
     for adj in verb_nsubj_amod_dict[verb]:
         nsubj_amod_number += verb_nsubj_amod_dict[verb][adj]
-print('Number of nsubj_amod:', verb_nsubj_amod_dict)
+print('Number of nsubj_amod:', nsubj_amod_number)

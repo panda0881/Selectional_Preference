@@ -157,17 +157,6 @@ import os
 #         nsubj_amod_number += verb_nsubj_amod_dict[verb][adj]
 # print('Number of nsubj_amod:', nsubj_amod_number)
 
-print('We are working on yelp')
-sentence_number = 0
-yelp_folder_location = '/home/data/corpora/YELP/parsed_yelp_data_with_stanford/'
-for f_name in os.listdir(yelp_folder_location):
-    print('We are working on:', f_name)
-    tmp_file_name = yelp_folder_location + f_name
-    with open(tmp_file_name, 'r') as original_f:
-        sampled_data = json.load(original_f)
-    sentence_number += len(sampled_data)
-
-print('Number of sentence:', sentence_number)
 
 print('We are working on nyt')
 sentence_number = 0
@@ -179,4 +168,18 @@ for f_name in os.listdir(nyt_folder_location):
         sampled_data = json.load(original_f)
     sentence_number += len(sampled_data)
 
-print('Number of sentence:', sentence_number)
+    print('Number of sentence:', sentence_number)
+
+
+print('We are working on yelp')
+sentence_number = 0
+yelp_folder_location = '/home/data/corpora/YELP/parsed_yelp_data_with_stanford/'
+for f_name in os.listdir(yelp_folder_location):
+    print('We are working on:', f_name)
+    tmp_file_name = yelp_folder_location + f_name
+    with open(tmp_file_name, 'r') as original_f:
+        sampled_data = json.load(original_f)
+    sentence_number += len(sampled_data)
+    print('Number of sentence:', sentence_number)
+
+

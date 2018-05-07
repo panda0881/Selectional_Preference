@@ -26,11 +26,11 @@ def calculate_IAA(scoring_dict, worker_ids):
         print(worker_ids[i], spearmanr(scoring_dict[worker_ids[i]], average_annotation[0].tolist())[0])
     return sum(IAA1_spearman_scores)/len(IAA1_spearman_scores), sum(IAA2_spearman_scores)/len(IAA2_spearman_scores)
 
-
-print('We are working on amod')
+current_edge_type = 'nsubj_amod'
+print('We are working on', current_edge_type)
 result_dict = dict()
 worker_ids = list()
-test_folder_path = 'merged_result/nsubj_amod'
+test_folder_path = 'merged_result/' + current_edge_type
 overall_confident_IAA1 = list()
 overall_confident_IAA2 = list()
 overall_difficult_IAA1 = list()

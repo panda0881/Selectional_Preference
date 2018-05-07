@@ -104,6 +104,16 @@ with open('nsubj_pairs.txt', 'r') as f:
 result_file.close()
 print(len(set(worker_ids)))
 
+if os.path.isfile('confident_pairs.json'):
+    with open('confident_pairs.json', 'r') as f:
+        confident_pairs = json.load(f)
+else:
+    confident_pairs = dict()
+
+if os.path.isfile('verb_nsubj_amod_dict_wiki.json'):
+    with open('verb_nsubj_amod_dict_wiki.json', 'r') as f:
+        verb_nsubj_amod_dict = json.load(f)
+
 print('We are working on dobj_amod')
 result_dict = dict()
 test_folder_path = 'merged_result/dobj_amod'

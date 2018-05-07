@@ -164,9 +164,13 @@ nyt_folder_location = '/home/data/corpora/nytimes/parsed_NYT_data/'
 for f_name in os.listdir(nyt_folder_location):
     print('We are working on:', f_name)
     tmp_file_name = nyt_folder_location + f_name
-    with open(tmp_file_name, 'r') as original_f:
-        sampled_data = json.load(original_f)
-    sentence_number += len(sampled_data)
+    try:
+        with open(tmp_file_name, 'r') as original_f:
+            sampled_data = json.load(original_f)
+        sentence_number += len(sampled_data)
+    except ValueError:
+        print('Something is wrong with this data')
+        continue
 
     print('Number of sentence:', sentence_number)
 

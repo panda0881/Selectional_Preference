@@ -198,10 +198,10 @@ kind	different	8.181818181818182
 kind	various	6.590909090909091
 kind	faster	2.75
 kind	metropolitan	2.0
-5head	new	3.333333333333334
-5head	large	6.5
-5head	automatic	0.7500000000000001
-5head	cultural	3.333333333333334
+head	new	3.333333333333334
+head	large	6.5
+head	automatic	0.7500000000000001
+head	cultural	3.333333333333334
 house	new	7.5
 house	public	5.833333333333334
 house	classic	5.5

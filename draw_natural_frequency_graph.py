@@ -10,8 +10,6 @@ annotation = data['amod']['annotation']
 frequency = data['amod']['frequency']
 print('spearman:', spearmanr(annotation, frequency)[0])
 
-
-
 # print('We are working on nsubj')
 # annotation = data['nsubj']['annotation']
 # frequency = data['nsubj']['frequency']
@@ -20,6 +18,16 @@ print('spearman:', spearmanr(annotation, frequency)[0])
 # print('We are working on dobj')
 # annotation = data['dobj']['annotation']
 # frequency = data['dobj']['frequency']
+# print('spearman:', spearmanr(annotation, frequency)[0])
+
+# print('We are working on nsubj_amod')
+# annotation = data['nsubj_amod']['annotation']
+# frequency = data['nsubj_amod']['frequency']
+# print('spearman:', spearmanr(annotation, frequency)[0])
+#
+# print('We are working on dobj_amod')
+# annotation = data['dobj_amod']['annotation']
+# frequency = data['dobj_amod']['frequency']
 # print('spearman:', spearmanr(annotation, frequency)[0])
 
 fig = plt.figure()

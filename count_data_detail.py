@@ -167,7 +167,8 @@ for f_name in os.listdir(nyt_folder_location):
     try:
         with open(tmp_file_name, 'r') as original_f:
             sampled_data = json.load(original_f)
-        sentence_number += len(sampled_data)
+        for sentence in sampled_data:
+            sentence_number += len(sentence)
     except ValueError:
         print('Something is wrong with this data')
         continue
@@ -183,7 +184,8 @@ for f_name in os.listdir(yelp_folder_location):
     tmp_file_name = yelp_folder_location + f_name
     with open(tmp_file_name, 'r') as original_f:
         sampled_data = json.load(original_f)
-    sentence_number += len(sampled_data)
+    for sentence in sampled_data:
+            sentence_number += len(sentence)
     print('Number of sentence:', sentence_number)
 
 

@@ -2,6 +2,7 @@ import pandas
 import os
 from scipy.stats import spearmanr
 import numpy
+import json
 
 
 def calculate_IAA(scoring_dict, worker_ids):
@@ -26,8 +27,21 @@ def calculate_IAA(scoring_dict, worker_ids):
         print(worker_ids[i], spearmanr(scoring_dict[worker_ids[i]], average_annotation[0].tolist())[0])
     return sum(IAA1_spearman_scores)/len(IAA1_spearman_scores), sum(IAA2_spearman_scores)/len(IAA2_spearman_scores)
 
-current_edge_type = 'nsubj_amod'
+current_edge_type = 'nsubj'
 print('We are working on', current_edge_type)
+
+if os.path.isfile('confident_pairs.json'):
+    with open('confident_pairs.json', 'r') as f:
+        confident_pairs = json.load(f)
+else:
+    confident_pairs = dict()
+
+if os.path.isfile('difficult_pairs.json'):
+    with open('difficult_pairs.json', 'r') as f:
+        difficult_pairs = json.load(f)
+else:
+    difficult_pairs = dict()
+
 result_dict = dict()
 worker_ids = list()
 test_folder_path = 'merged_result/' + current_edge_type
@@ -38,8 +52,8 @@ overall_difficult_IAA2 = list()
 overall_all_IAA1 = list()
 overall_all_IAA2 = list()
 variance_dict = dict()
+number_of_annotation = 0
 for f_name in os.listdir(test_folder_path):
-
     file_name = test_folder_path + '/' + f_name
     test_data = pandas.read_csv(file_name)
     for cal_name in test_data:
@@ -60,8 +74,9 @@ for f_name in os.listdir(test_folder_path):
                         invalid_labelling = True
                     else:
                         tmp_scoring.append(int(score))
+            number_of_annotation += len(tmp_scoring)
             variance_dict[cal_name] = numpy.var(tmp_scoring)
-
+print('Number of annotation:', number_of_annotation)
 annotation_variance = pandas.Series(variance_dict)
 annotation_variance.sort()
 # print(annotation_variance)
@@ -69,6 +84,18 @@ annotation_variance.sort()
 confident_ids = annotation_variance.index.tolist()[:1000]
 difficult_ids = annotation_variance.index.tolist()[1000:]
 
+tmp_confident_ids = list()
+tmp_difficult_ids = list()
+for tmp_id in confident_ids:
+    tmp_confident_ids.append(tmp_id[-6:])
+for tmp_id in difficult_ids:
+    tmp_difficult_ids.append(tmp_id[-6:])
+confident_pairs[current_edge_type] = tmp_confident_ids
+difficult_pairs[current_edge_type] = tmp_difficult_ids
+with open('confident_pairs.json', 'w') as f:
+    json.dump(confident_pairs, f)
+with open('difficult_pairs.json', 'w') as f:
+    json.dump(difficult_pairs, f)
 
 for f_name in os.listdir(test_folder_path):
     # f_name = 'v225_.csv'

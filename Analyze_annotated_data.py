@@ -1,5 +1,8 @@
 import pandas
 import os
+import json
+with open('confident_pairs.json', 'r') as f:
+    confident_pairs = json.load(f)
 
 print('We are working on amod')
 result_dict = dict()
@@ -19,7 +22,8 @@ for f_name in os.listdir(test_folder_path):
                 if score > 0:
                     result_dict[cal_name[7:]].append(score)
 
-result_file = open('amod_anotation.txt', 'w')
+result_file = open('amod_annotation.txt', 'w')
+confident_file = open('amod_annotation_confident.txt', 'w')
 
 with open('amod_pairs.txt', 'r') as f:
     counter = 0
@@ -33,7 +37,10 @@ with open('amod_pairs.txt', 'r') as f:
             score = sum(result_dict[tmp_name])/len(result_dict[tmp_name])
             score = (score-1)*2.5
             result_file.write(noun+'\t'+adj+'\t'+str(score)+'\n')
+            if tmp_name[-6:] in confident_pairs['amod']:
+                confident_file.write(noun+'\t'+adj+'\t'+str(score)+'\n')
 result_file.close()
+confident_file.close()
 print(len(set(worker_ids)))
 
 print('We are working on dobj')
@@ -53,7 +60,8 @@ for f_name in os.listdir(test_folder_path):
                 if score > 0:
                     result_dict[cal_name[7:]].append(score)
 
-result_file = open('dobj_anotation.txt', 'w')
+result_file = open('dobj_annotation.txt', 'w')
+confident_file = open('dobj_annotation_confident.txt', 'w')
 
 with open('dobj_pairs.txt', 'r') as f:
     counter = 0
@@ -67,7 +75,10 @@ with open('dobj_pairs.txt', 'r') as f:
             score = sum(result_dict[tmp_name])/len(result_dict[tmp_name])
             score = (score-1)*2.5
             result_file.write(verb+'\t'+noun+'\t'+str(score)+'\n')
+            if tmp_name[-6:] in confident_pairs['dobj']:
+                confident_file.write(verb+'\t'+noun+'\t'+str(score)+'\n')
 result_file.close()
+confident_file.close()
 print(len(set(worker_ids)))
 
 print('We are working on nsubj')
@@ -87,7 +98,8 @@ for f_name in os.listdir(test_folder_path):
                 if score > 0:
                     result_dict[cal_name[7:]].append(score)
 
-result_file = open('nsubj_anotation.txt', 'w')
+result_file = open('nsubj_annotation.txt', 'w')
+confident_file = open('nsubj_annotation_confident.txt', 'w')
 
 with open('nsubj_pairs.txt', 'r') as f:
     counter = 0
@@ -101,18 +113,13 @@ with open('nsubj_pairs.txt', 'r') as f:
             score = sum(result_dict[tmp_name])/len(result_dict[tmp_name])
             score = (score-1)*2.5
             result_file.write(verb+'\t'+noun+'\t'+str(score)+'\n')
+            if tmp_name[-6:] in confident_pairs['nsubj']:
+                confident_file.write(verb+'\t'+noun+'\t'+str(score)+'\n')
 result_file.close()
+confident_file.close()
 print(len(set(worker_ids)))
 
-if os.path.isfile('confident_pairs.json'):
-    with open('confident_pairs.json', 'r') as f:
-        confident_pairs = json.load(f)
-else:
-    confident_pairs = dict()
 
-if os.path.isfile('verb_nsubj_amod_dict_wiki.json'):
-    with open('verb_nsubj_amod_dict_wiki.json', 'r') as f:
-        verb_nsubj_amod_dict = json.load(f)
 
 print('We are working on dobj_amod')
 result_dict = dict()
@@ -131,7 +138,8 @@ for f_name in os.listdir(test_folder_path):
                 if score > 0:
                     result_dict[cal_name[7:]].append(score)
 
-result_file = open('dobj_amod_anotation.txt', 'w')
+result_file = open('dobj_amod_annotation.txt', 'w')
+confident_file = open('dobj_amod_annotation_confident.txt', 'w')
 
 with open('dobj_amod_pairs.txt', 'r') as f:
     counter = 0
@@ -145,7 +153,10 @@ with open('dobj_amod_pairs.txt', 'r') as f:
             score = sum(result_dict[tmp_name])/len(result_dict[tmp_name])
             score = (score-1)*2.5
             result_file.write(verb+'\t'+adj+'\t'+str(score)+'\n')
+            if tmp_name[-6:] in confident_pairs['dobj_amod']:
+                confident_file.write(verb+'\t'+adj+'\t'+str(score)+'\n')
 result_file.close()
+confident_file.close()
 print(len(set(worker_ids)))
 
 print('We are working on nsubj_amod')
@@ -165,7 +176,8 @@ for f_name in os.listdir(test_folder_path):
                 if score > 0:
                     result_dict[cal_name[7:]].append(score)
 
-result_file = open('nsubj_amod_anotation.txt', 'w')
+result_file = open('nsubj_amod_annotation.txt', 'w')
+confident_file = open('nsubj_amod_annotation_confident.txt', 'w')
 
 with open('nsubj_amod_pairs.txt', 'r') as f:
     counter = 0
@@ -179,7 +191,10 @@ with open('nsubj_amod_pairs.txt', 'r') as f:
             score = sum(result_dict[tmp_name])/len(result_dict[tmp_name])
             score = (score-1)*2.5
             result_file.write(verb+'\t'+adj+'\t'+str(score)+'\n')
+            if tmp_name[-6:] in confident_pairs['nsubj_amod']:
+                confident_file.write(verb+'\t'+adj+'\t'+str(score)+'\n')
 result_file.close()
+confident_file.close()
 print(len(set(worker_ids)))
 
 

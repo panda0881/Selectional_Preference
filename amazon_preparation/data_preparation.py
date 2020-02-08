@@ -18,7 +18,6 @@ def generate_object_question(tmp_verb, tmp_object, name, question_number):
 
 <div class="object"><label><input name='""" + name + """' type="radio" value="1" />It's not applicable at all (<b>1</b>) </label></div>
 
-<div class="object"><label><input name='""" + name + """' type="radio" value="-1" />I'm not sure </label></div>
 </fieldset>"""
     return raw_data
 
@@ -37,7 +36,6 @@ def generate_subject_question(tmp_verb, tmp_subject, name, question_number):
 
 <div class="subject"><label><input name='""" + name + """' type="radio" value="1" />It's not applicable at all (<b>1</b>) </label></div>
 
-<div class="subject"><label><input name='""" + name + """' type="radio" value="-1" />I'm not sure </label></div>
 </fieldset>"""
     return raw_data
 
@@ -56,7 +54,7 @@ def generate_object_amod_question(tmp_verb, tmp_adj, name, question_number):
 
 <div class="object_amod"><label><input name='""" + name + """' type="radio" value="1" />It's not applicable at all (<b>1</b>) </label></div>
 
-<div class="object_amod"><label><input name='""" + name + """' type="radio" value="-1" />I'm not sure </label></div>
+
 </fieldset>"""
     return raw_data
 
@@ -75,7 +73,6 @@ def generate_subject_amod_question(tmp_verb, tmp_adj, name, question_number):
 
 <div class="subject_amod"><label><input name='""" + name + """' type="radio" value="1" />It's not applicable at all (<b>1</b>) </label></div>
 
-<div class="subject_amod"><label><input name='""" + name + """' type="radio" value="-1" />I'm not sure </label></div>
 </fieldset>"""
     return raw_data
 
@@ -94,7 +91,6 @@ def generate_amod_question(tmp_noun, tmp_adj, name, question_number):
 
 <div class="amod"><label><input name='""" + name + """' type="radio" value="1" />It's not applicable at all (<b>1</b>) </label></div>
 
-<div class="amod"><label><input name='""" + name + """' type="radio" value="-1" />I'm not sure </label></div>
 </fieldset>"""
     return raw_data
 
@@ -130,7 +126,6 @@ def generate_object_questionnaire(verb_dict, verb_label_dict, selected_verbs, ou
 	<li>In some examples, a verb is always connected with a specific kind of objects. For example, <font color="red"><b>'eat'</b></font> and <font color="red"><b>'food'</b></font>. In this case, you should label this example with <b>5</b>.</li>
     <li>In some examples, a verb does not have certain preference with objects. For example, <font color="red"><b>'love'</b></font> and <font color="red"><b>'country'</b></font>. In this case, we can love anything, so you should label this example with <b>3</b>.</li>
     <li>In some examples, a verb is paired with a word that should not be its object. For example, <font color="red"><b>'eat'</b></font> and <font color="red"><b>'house'</b></font>. In this case, you should label this example with <b>1</b>.</li>
-    <li>Anything between the above three situations, you can label them based on your feeling or commonsense. But if you don't know the meaning of these two words, please simply choose <b>'I'm not sure'</b>.</li>
     <li>You will be asked to label 103 questions. 3 very simple questions are randomly mixed into the dataset to make sure the quality of the annotation.</li>
     <li>PS: To finish this job, you must effectively label more than <b>80%</b> of the questions, which simply means that you can't choose <b>'I'm not sure'</b> for all the questions.</li>
 </ul>
@@ -533,18 +528,24 @@ simple_checking_pairs['amod'] = [('food', 'tasty'), ('house', 'large'), ('rock',
 nsubj_amod_dict = dict()
 all_verbs = list()
 verb_pos_dict = dict()
-with open('../nsubj_amod_pairs.txt', 'r') as f:
+with open('../wino_nsubj_amod.txt', 'r') as f:
     counter = 0
     for line in f:
         counter += 1
         words = line[:-1].split('\t')
-        nsubj_amod_dict[words[0]] = [words[1], words[2], words[3], words[4]]
+        nsubj_amod_dict[words[0]] = list()
+        for tmp_amod in words[1:]:
+            nsubj_amod_dict[words[0]].append(tmp_amod)
         all_verbs.append(words[0])
         verb_pos_dict[words[0]] = counter
 
-for i in range(20):
-    selected_verbs = all_verbs[i*25: (i+1)*25]
-    file_name = 'nsubj_amod/nsubj_amod_' + str(i+1) + '.html'
-    generate_subj_amod_questionnaire(nsubj_amod_dict, verb_pos_dict, selected_verbs, file_name)
+# for i in range(20):
+#     selected_verbs = all_verbs[i*25: (i+1)*25]
+#     file_name = 'wino/dobj_' + str(i+1) + '.html'
+#     generate_object_amod_questionnaire(nsubj_amod_dict, verb_pos_dict, selected_verbs, file_name)
+
+
+file_name = 'wino/nsubj_amod.html'
+generate_subj_amod_questionnaire(nsubj_amod_dict, verb_pos_dict, all_verbs, file_name)
 
 print('end')

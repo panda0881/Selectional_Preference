@@ -61,7 +61,7 @@ width = 0.35
 ind = np.arange(5)
 fig, ax = plt.subplots()
 
-rects1 = ax.bar(ind, times, width, color='b')
+rects1 = ax.bar(ind, times, width, color='#017c7a')
 
 
 ax.set_ylabel('Avg. Time', fontsize=25)
